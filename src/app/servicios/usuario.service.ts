@@ -51,6 +51,13 @@ export class UsuarioService {
     return this._http.delete(this.ruta + 'eliminarEmpleado/' + id, {headers: headersToken});
    }
 
+   obtenerEmpleados(): Observable<any>{
+
+     let headersToken = this.headersVariable.set('Authorization', this.obtenerToken());
+
+     return this._http.get(this.ruta + 'obtenerEmpleados', {headers: headersToken});
+   }
+
 
    obtenerToken(){
      var token2 = localStorage.getItem('token');
