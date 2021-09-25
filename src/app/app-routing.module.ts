@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EmpleadoComponent } from './componentes/empleado/empleado.component';
 import { EmpresaComponent } from './componentes/empresa/empresa.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { LoginAdminComponent } from './componentes/login-admin/login-admin.component';
@@ -12,7 +13,7 @@ const routes: Routes = [
   { path: 'loginEmpresa', component: LoginEmpresaComponent},
   { path: 'inicio', component: InicioComponent, canActivate:[RestriccionService]},
   { path: 'empresa', component: EmpresaComponent, canActivate:[RestriccionService]},
-  { path: 'empleados', component: EmpresaComponent, canActivate:[RestriccionService]},
+  { path: 'empleados', component: EmpleadoComponent, canActivate:[RestriccionService]},
   { path: '**', component: LoginAdminComponent}
 ];
 
