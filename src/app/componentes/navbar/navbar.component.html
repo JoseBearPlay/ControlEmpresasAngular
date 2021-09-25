@@ -1,19 +1,12 @@
-<head>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
- <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-  </head>
 
-  <body>
-    <input type="checkbox" id="active">
-    <label for="active" class="menu-btn"><span></span></label>
-    <label for="active" class="close"></label>
-    <div class="wrapper">
-      <ul>
-<li><a href="#">Home</a></li>
-<li><a href="#">Login</a></li>
-<li><a href="#">About</a></li>
-<li><a href="#">Logut</a></li>
-</ul>
-</div>
-</body>
+  <input class="menu-icon" type="checkbox" id="menu-icon" name="menu-icon"/>
+  <label for="menu-icon"></label>
+  <nav class="nav">
+    <ul class="pt-5">
+      <li><a class="nav-link" routerLink='/inicio' routerLinkActive='active'>Home</a></li>
+      <li><a class="nav-link" routerLink='/loginAdmin' routerLinkActive='active'>Login Admin</a></li>
+      <li><a class="nav-link" routerLink='/loginEmpresa' routerLinkActive="active">Login Empresa</a></li>
+      <li><a class="nav-link" routerLink='/loginAdmin' routerLinkActive='active' (click)="logout()">Logout</a></li>
+    </ul>
+  </nav>
+

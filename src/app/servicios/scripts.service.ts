@@ -7,17 +7,17 @@ export class ScriptsService {
 
   constructor() { }
 
-  Carga ( archivos: String[]){
+  Carga( archivos: String[]){
 
     for(let archivo of archivos){
 
-      let script = document.createElement("script");
+      let scripts = document.createElement("script");
 
-      script.src = "../../assets/js/" + archivo + ".js";
+      scripts.src = "../../assets/js/" + archivo + ".js";
 
       let body = document.getElementsByTagName("body")[0];
 
-      body.appendChild( script);
+      body.appendChild( scripts );
     }
   }
 }

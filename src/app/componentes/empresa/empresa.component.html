@@ -1,0 +1,217 @@
+<body class="color">
+  Empresas
+</body>
+
+<br>
+
+<body>
+<div class="row">
+  <div class="col">
+    <div class="d-grid gap-2 d-md-block">
+      <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalAgregarEmpresa">
+        <i class="bi bi-plus-square">Agregar Empresa</i>
+      </button>
+    </div>
+  </div>
+</div>
+<br>
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+<div class="idance">
+    <div class="schedule content-block">
+        <div class="container">
+            <h2 data-aos="zoom-in-up" class="titulo">Empresas</h2>
+
+            <div class="timetable">
+
+              <!-- Schedule Top Navigation -->
+
+              <div class="tab-content">
+                <div class="tab-pane show active">
+                  <div class="row">
+
+                    <!-- Schedule Item 1 -->
+                    <div class="col-md-6" *ngFor="let emp of empresasList">
+                      <div class="timetable-item">
+                        <div class="timetable-item-main">
+                          <div class="timetable-item-time">{{emp.nombre}}</div>
+                          <div class="timetable-item-name">Direccion: {{emp.direccion}}</div>
+                          <div class="timetable-item-name">Telefono: {{emp.telefono}}</div>
+                          <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#modalVerEmpresa"
+                          (click)="obtenerEmpresasID(emp._id)">Ver</button> ||
+                          <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#modalEditarEmpresa"
+                          (click)="obtenerEmpresasID(emp._id)">Editar</button> ||
+                          <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalEliminarEmpresa"
+                          (click)="obtenerEmpresasID(emp._id)">Eliminar</button>
+
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+
+
+  <!-- Modal Agregar Usuario -->
+<div class="modal fade" id="modalAgregarEmpresa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ver Usuario</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="inputNombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="inputNombre" name="nombre" #nombre="ngModel"
+            [(ngModel)]="empresaIDModel.nombre" >
+          </div>
+          <div class="mb-3">
+            <label for="inputDireccion" class="form-label">Direccion</label>
+            <input type="text" class="form-control" id="inputDireccion" name="direccion" #direccion="ngModel"
+            [(ngModel)]="empresaIDModel.direccion" >
+          </div>
+          <div class="mb-3">
+            <label for="inputTelefono" class="form-label">Telefono</label>
+            <input type="text" class="form-control" id="inputTelefono" name="telefono" #telefono="ngModel"
+            [(ngModel)]="empresaIDModel.telefono">
+          </div>
+          <div class="mb-3">
+            <label for="inputPassword" class="form-label">Password</label>
+            <input type="text" class="form-control" id="inputPassword" name="password" #password="ngModel"
+            [(ngModel)]="empresaIDModel.password">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button button class="btn btn-outline-warning" data-bs-dismiss="modal">Close</button>
+        <button button class="btn btn-outline-success" data-bs-dismiss="modal" (click)="agregarEmpresa()">Agregar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal Ver Usuario -->
+<div class="modal fade" id="modalVerEmpresa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ver Usuario</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="inputNombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="inputNombre" name="nombre" #nombre="ngModel"
+            [(ngModel)]="empresaIDModel.nombre" disabled>
+          </div>
+          <div class="mb-3">
+            <label for="inputDireccion" class="form-label">Direccion</label>
+            <input type="text" class="form-control" id="inputDireccion" name="direccion" #direccion="ngModel"
+            [(ngModel)]="empresaIDModel.direccion" disabled>
+          </div>
+          <div class="mb-3">
+            <label for="inputTelefono" class="form-label">Telefono</label>
+            <input type="text" class="form-control" id="inputTelefono" name="telefono" #telefono="ngModel"
+            [(ngModel)]="empresaIDModel.telefono" disabled>
+          </div>
+          <div class="mb-3">
+            <label for="inputRol" class="form-label">Rol</label>
+            <input type="text" class="form-control" id="inputRol" name="rol" #rol="ngModel"
+            [(ngModel)]="empresaIDModel.rol" disabled>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button button class="btn btn-outline-success" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modal Editar Empresa-->
+<div class="modal fade" id="modalEditarEmpresa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ver Usuario</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="inputNombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="inputNombre" name="nombre" #nombre="ngModel"
+            [(ngModel)]="empresaIDModel.nombre" disabled>
+          </div>
+          <div class="mb-3">
+            <label for="inputDireccion" class="form-label">Direccion</label>
+            <input type="text" class="form-control" id="inputDireccion" name="direccion" #direccion="ngModel"
+            [(ngModel)]="empresaIDModel.direccion">
+          </div>
+          <div class="mb-3">
+            <label for="inputTelefono" class="form-label">Telefono</label>
+            <input type="text" class="form-control" id="inputTelefono" name="telefono" #telefono="ngModel"
+            [(ngModel)]="empresaIDModel.telefono">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button button class="btn btn-outline-warning" data-bs-dismiss="modal">Close</button>
+        <button button class="btn btn-outline-success" data-bs-dismiss="modal" (click)="editarEmpresa()">Editar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal eliminar Empresa -->
+<div class="modal fade" id="modalEliminarEmpresa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ver Usuario</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="inputNombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="inputNombre" name="nombre" #nombre="ngModel"
+            [(ngModel)]="empresaIDModel.nombre" disabled>
+          </div>
+          <div class="mb-3">
+            <label for="inputDireccion" class="form-label">Direccion</label>
+            <input type="text" class="form-control" id="inputDireccion" name="direccion" #direccion="ngModel"
+            [(ngModel)]="empresaIDModel.direccion" disabled>
+          </div>
+          <div class="mb-3">
+            <label for="inputTelefono" class="form-label">Telefono</label>
+            <input type="text" class="form-control" id="inputTelefono" name="telefono" #telefono="ngModel"
+            [(ngModel)]="empresaIDModel.telefono" disabled>
+          </div>
+          <div class="mb-3">
+            <label for="inputRol" class="form-label">Rol</label>
+            <input type="text" class="form-control" id="inputRol" name="rol" #rol="ngModel"
+            [(ngModel)]="empresaIDModel.rol" disabled>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button button class="btn btn-outline-warning" data-bs-dismiss="modal">Close</button>
+        <button button class="btn btn-outline-danger" data-bs-dismiss="modal" (click)="eliminarEmpresa(empresaIDModel._id)">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>

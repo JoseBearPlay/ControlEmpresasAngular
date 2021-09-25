@@ -1,0 +1,107 @@
+<div *ngIf="_usuarioService.obtenerIdentidad().rol === 'Admin'">
+<body>
+  Empresas
+</body>
+<br>
+
+<!--Hey! This is the original version
+of Simple CSS Waves-->
+
+
+  <div class="header">
+
+
+
+    <div class="card">
+      <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+        <img
+          src="https://i.ytimg.com/vi/5MAEZ1ss8Hk/maxresdefault.jpg"
+          class="img-fluid"
+        />
+        <a href="#!">
+          <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+        </a>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">
+          Visualize todas las empresas que se encuentran dentro de la aplicacion presionando el siguiente Boton
+        </p>
+        <button type="button" class="btn btn-outline-success" routerLink='/empresa' routerLinkActive='active'>Empresas</button>
+      </div>
+    </div>
+  <br>
+
+    <!--Waves Container-->
+
+    <!--Waves end-->
+
+    </div>
+    <!--Header ends-->
+  </div>
+
+
+<!----------------------------------------------------------------------------------Rol Empresa --------------------------------------------------------------------------------->
+
+
+  <div *ngIf="_usuarioService.obtenerIdentidad().rol === 'empresa'">
+    <body>
+      Empleados
+    </body>
+    <br>
+
+    <!--Hey! This is the original version
+    of Simple CSS Waves-->
+
+
+      <div class="header">
+
+
+
+        <div class="card">
+          <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+            <img
+              src="https://image.freepik.com/vector-gratis/concepto-trabajo-equipo-empresarial-trabajo-conjunto-reuniones-presentaciones-estadisticas-datos-ilustracion-vectorial-plana_138260-654.jpg"
+              class="img-fluid"
+            />
+            <a href="#!">
+              <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+            </a>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              Visualize todos los empleados que se encuentran dentro de su Empresa presionando el siguiente Boton
+            </p>
+            <button type="button" class="btn btn-outline-success" routerLink='/empresa' routerLinkActive='active'>Empleados</button>
+          </div>
+        </div>
+      <br>
+
+      <div class="card">
+        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+          <img
+            src="https://c8.alamy.com/compes/2fydj4a/conjunto-de-iconos-de-dibujos-animados-de-croquis-iconos-de-tecnologia-dispositivos-digitales-y-gadgets-2fydj4a.jpg"
+            class="img-fluid"
+          />
+          <a href="#!">
+            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+          </a>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">
+            Visualize todos los productos que se encuentran dentro de su Empresa presionando el siguiente Boton
+          </p>
+          <button type="button" class="btn btn-outline-success" routerLink='/empresa' routerLinkActive='active'>Productos</button>
+        </div>
+      </div>
+
+        <!--Waves Container-->
+
+        <!--Waves end-->
+
+        </div>
+        <!--Header ends-->
+      </div>
+

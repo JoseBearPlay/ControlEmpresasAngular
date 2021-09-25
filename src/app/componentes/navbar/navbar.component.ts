@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ScriptsService } from 'src/app/servicios/scripts.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,11 +7,8 @@ import { ScriptsService } from 'src/app/servicios/scripts.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor( private _Scripts: ScriptsService) {
-/*
-    _Scripts.Carga(["navbar/navbar"])
+  constructor() {
 
-    */
    }
 
   ngOnInit(): void {
