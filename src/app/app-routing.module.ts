@@ -5,6 +5,7 @@ import { EmpresaComponent } from './componentes/empresa/empresa.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { LoginAdminComponent } from './componentes/login-admin/login-admin.component';
 import { LoginEmpresaComponent } from './componentes/login-empresa/login-empresa.component';
+import { ProductosComponent } from './componentes/productos/productos.component';
 import { RestriccionService } from './servicios/restriccion.service';
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'inicio', component: InicioComponent, canActivate:[RestriccionService]},
   { path: 'empresa', component: EmpresaComponent, canActivate:[RestriccionService]},
   { path: 'empleados', component: EmpleadoComponent, canActivate:[RestriccionService]},
+  { path: 'productos', component: ProductosComponent, canActivate:[RestriccionService]},
   { path: '**', component: LoginAdminComponent}
 ];
 
