@@ -2,13 +2,12 @@
   Empresas
 </body>
 
-<br>
-
-<body>
+<body class="fondo">
 <div class="row">
   <div class="col">
     <div class="d-grid gap-2 d-md-block">
-      <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalAgregarEmpresa">
+      <br>
+      <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#modalAgregarEmpresa">
         <i class="bi bi-plus-square">Agregar Empresa</i>
       </button>
     </div>
@@ -40,7 +39,7 @@
                           <div class="timetable-item-name">Telefono: {{emp.telefono}}</div>
                           <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#modalVerEmpresa"
                           (click)="obtenerEmpresasID(emp._id)">Ver</button> ||
-                          <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#modalEditarEmpresa"
+                          <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#modalEditarEmpresa"
                           (click)="obtenerEmpresasID(emp._id)">Editar</button> ||
                           <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalEliminarEmpresa"
                           (click)="obtenerEmpresasID(emp._id)">Eliminar</button>
@@ -91,7 +90,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button button class="btn btn-outline-warning" data-bs-dismiss="modal">Close</button>
+        <button button class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
         <button button class="btn btn-outline-success" data-bs-dismiss="modal" (click)="agregarEmpresa()">Agregar</button>
       </div>
     </div>
@@ -152,7 +151,7 @@
           <div class="mb-3">
             <label for="inputNombre" class="form-label">Nombre</label>
             <input type="text" class="form-control" id="inputNombre" name="nombre" #nombre="ngModel"
-            [(ngModel)]="empresaIDModel.nombre" disabled>
+            [(ngModel)]="empresaIDModel.nombre">
           </div>
           <div class="mb-3">
             <label for="inputDireccion" class="form-label">Direccion</label>
@@ -167,7 +166,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button button class="btn btn-outline-warning" data-bs-dismiss="modal">Close</button>
+        <button button class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
         <button button class="btn btn-outline-success" data-bs-dismiss="modal" (click)="editarEmpresa()">Editar</button>
       </div>
     </div>
@@ -208,7 +207,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button button class="btn btn-outline-warning" data-bs-dismiss="modal">Close</button>
+        <button button class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
         <button button class="btn btn-outline-danger" data-bs-dismiss="modal" (click)="eliminarEmpresa(empresaIDModel._id)">Eliminar</button>
       </div>
     </div>
