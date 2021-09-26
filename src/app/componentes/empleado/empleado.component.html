@@ -1,4 +1,258 @@
-<body>
-  Empleados
-</body>
 
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.87.0">
+    <title>Heroes · Bootstrap v5.1</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/heroes/">
+
+  </head>
+  <body>
+
+<main>
+
+
+  <div class="b-example-divider"></div>
+
+  <div>
+  <h1 class="diferent">Empleados Registrados</h1>
+</div>
+
+<br>
+
+<div class="row">
+  <div class="col">
+    <div class="d-grid gap-2 d-md-block">
+      <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalAgregarProducto">
+        <i class="bi bi-plus-square">Agregar Producto</i>
+      </button>
+    </div>
+  </div>
+</div>
+
+  <br>
+
+
+<br>
+
+  <h5 class="pal2">Buscar Empleado Por:</h5>
+
+  <div>
+    <form class="form">
+      <input [(ngModel)]="buscarNombre" type="search" name="buscarNombre" placeholder="Nombre Usuario" autocomplete="off">
+    </form>
+  </div>
+  <div>
+    <form class="form">
+  <input [(ngModel)]="buscarDepartamento" type="search" name="buscarDepartamento" placeholder="Nombre Departamento" autocomplete="off">
+    </form>
+  </div>
+  <div>
+    <form class="form">
+  <input [(ngModel)]="buscarPuesto" type="search" name="buscarPuesto" placeholder="Nombre Puesto" autocomplete="off">
+    </form>
+  </div>
+
+  <div *ngFor="let emp of empleadosList | buscarNombre: buscarNombre | buscarDepartamento: buscarDepartamento">
+  <div class="px-4 pt-5 my-5 text-center border-bottom">
+    <h1 class="display-4 fw-bold">{{emp.nombre}}</h1>
+    <h5 class="pal">Puesto: {{emp.puesto}}</h5>
+    <h5 class="pal">Departamento: {{emp.departamento}}</h5>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4"></p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+        <button type="button" class="btn btn-primary btn-lg px-4 me-sm-3" data-bs-toggle="modal" data-bs-target="#modalVerProducto"
+        (click)="obtenerEmpleadoID(emp._id)">Ver Usuario</button>
+      </div>
+    </div>
+    <div class="overflow-hidden" style="max-height: 30vh;">
+
+    </div>
+  </div>
+</div>
+
+  <div class="b-example-divider mb-0"></div>
+</main>
+
+  </body>
+</html>
+
+
+
+<!-- Modal Agregar Empleado -->
+<div class="modal fade" id="modalAgregarEmpleado" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ver Empleado</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="form">
+          <div class="mb-3">
+            <label for="inputID1" class="form-label">Nombre</label>
+            <input type="email" class="form-control" id="inputID1" name="ID1" #ID1="ngModel"
+            [(ngModel)]="empleadoIDModel.nombre">
+          </div>
+          <div class="mb-3">
+            <label for="inputNombre1" class="form-label">Puesto</label>
+            <input type="text" class="form-control" id="inputNombre1" name="nombre1" #nombre1="ngModel"
+            [(ngModel)]="empleadoIDModel.puesto">
+          </div>
+          <div class="mb-3">
+            <label for="inputApellido1" class="form-label">Departamento</label>
+            <input type="text" class="form-control" id="inputApellido1" name="apellido1" #apellido1="ngModel"
+            [(ngModel)]="empleadoIDModel.departamento">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+        (click)="agregraEmpleado()">Agregar Empleado</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal ver Empleado -->
+<div class="modal fade" id="modalVerEmpleado" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ver Empleado</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="form">
+          <div class="mb-3">
+            <label for="inputID1" class="form-label">Nombre</label>
+            <input type="email" class="form-control" id="inputID1" name="ID1" #ID1="ngModel"
+            [(ngModel)]="empleadoIDModel.nombre" disabled>
+          </div>
+          <div class="mb-3">
+            <label for="inputID12" class="form-label">Usuario</label>
+            <input type="email" class="form-control" id="inputID12" name="ID12" #ID12="ngModel"
+            [(ngModel)]="empleadoIDModel.usuario" disabled>
+          </div>
+          <div class="mb-3">
+            <label for="inputNombre1" class="form-label">Rol</label>
+            <input type="text" class="form-control" id="inputNombre1" name="nombre1" #nombre1="ngModel"
+            [(ngModel)]="empleadoIDModel.rol" disabled>
+          </div>
+          <div class="mb-3">
+            <label for="inputPuesto" class="form-label">Puesto</label>
+            <input type="text" class="form-control" id="inputPuesto" name="puesto" #puesto="ngModel"
+            [(ngModel)]="empleadoIDModel.puesto" disabled>
+          </div>
+          <div class="mb-3">
+            <label for="inputApellido1" class="form-label">Departamento</label>
+            <input type="text" class="form-control" id="inputApellido1" name="apellido1" #apellido1="ngModel"
+            [(ngModel)]="empleadoIDModel.departamento" disabled>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal editar Empleado -->
+<div class="modal fade" id="modalEditarEmpleado" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ver Empleado</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="form">
+          <div class="mb-3">
+            <label for="inputID1" class="form-label">Nombre</label>
+            <input type="email" class="form-control" id="inputID1" name="ID1" #ID1="ngModel"
+            [(ngModel)]="empleadoIDModel.nombre">
+          </div>
+          <div class="mb-3">
+            <label for="inputID12" class="form-label">Usuario</label>
+            <input type="email" class="form-control" id="inputID12" name="ID12" #ID12="ngModel"
+            [(ngModel)]="empleadoIDModel.usuario">
+          </div>
+          <div class="mb-3">
+            <label for="inputNombre1" class="form-label">Rol</label>
+            <input type="text" class="form-control" id="inputNombre1" name="nombre1" #nombre1="ngModel"
+            [(ngModel)]="empleadoIDModel.rol" disabled>
+          </div>
+          <div class="mb-3">
+            <label for="inputPuesto" class="form-label">Puesto</label>
+            <input type="text" class="form-control" id="inputPuesto" name="puesto" #puesto="ngModel"
+            [(ngModel)]="empleadoIDModel.puesto">
+          </div>
+          <div class="mb-3">
+            <label for="inputApellido1" class="form-label">Departamento</label>
+            <input type="text" class="form-control" id="inputApellido1" name="apellido1" #apellido1="ngModel"
+            [(ngModel)]="empleadoIDModel.departamento">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="editarEmpleado()">Editar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal eliminar Empleado -->
+<div class="modal fade" id="modalEliminarEmpleado" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ver Empleado</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="form">
+          <div class="mb-3">
+            <label for="inputID1" class="form-label">Nombre</label>
+            <input type="email" class="form-control" id="inputID1" name="ID1" #ID1="ngModel"
+            [(ngModel)]="empleadoIDModel.nombre" disabled>
+          </div>
+          <div class="mb-3">
+            <label for="inputID12" class="form-label">Usuario</label>
+            <input type="email" class="form-control" id="inputID12" name="ID12" #ID12="ngModel"
+            [(ngModel)]="empleadoIDModel.usuario" disabled>
+          </div>
+          <div class="mb-3">
+            <label for="inputNombre1" class="form-label">Rol</label>
+            <input type="text" class="form-control" id="inputNombre1" name="nombre1" #nombre1="ngModel"
+            [(ngModel)]="empleadoIDModel.rol" disabled>
+          </div>
+          <div class="mb-3">
+            <label for="inputPuesto" class="form-label">Puesto</label>
+            <input type="text" class="form-control" id="inputPuesto" name="puesto" #puesto="ngModel"
+            [(ngModel)]="empleadoIDModel.puesto" disabled>
+          </div>
+          <div class="mb-3">
+            <label for="inputApellido1" class="form-label">Departamento</label>
+            <input type="text" class="form-control" id="inputApellido1" name="apellido1" #apellido1="ngModel"
+            [(ngModel)]="empleadoIDModel.departamento" disabled>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="eliminarUsuario(empleadoIDModel._id)">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
