@@ -65,6 +65,13 @@ export class UsuarioService {
       return this._http.get(this.ruta + 'obtenerEmpleadoID/' + id, {headers: headersToken});
    }
 
+   generarPDF(): Observable<any>{
+
+      let headersToken = this.headersVariable.set('Authorization', this.obtenerToken());
+
+      return this._http.get(this.ruta + 'generarPDF', {headers: headersToken});
+   }
+
 
    obtenerToken(){
      var token2 = localStorage.getItem('token');
