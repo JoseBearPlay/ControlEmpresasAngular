@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class EmpleadoComponent implements OnInit {
 
+  buscar;
   buscarNombre;
   buscarPuesto;
   buscarDepartamento;
@@ -114,6 +115,22 @@ export class EmpleadoComponent implements OnInit {
         error => {
           console.log(<any>error);
         }
+    )
+  }
+
+
+  generarPDF(){
+    this._usuarioService.generarPDF().subscribe(
+      response => {
+        console.log(response)
+          Swal.fire({
+            icon: 'success',
+            title: 'Se ha generado el PDF exitosamente'
+          })
+      },
+      error => {
+        console.log(<any>error);
+      }
     )
   }
 }
