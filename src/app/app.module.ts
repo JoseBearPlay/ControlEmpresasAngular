@@ -16,7 +16,7 @@ import { BuscarPuestoPipe } from './pipes/buscar-puesto.pipe';
 import { BuscarDepartamentoPipe } from './pipes/buscar-departamento.pipe';
 import { ProductosComponent } from './componentes/productos/productos.component';
 import { BuscarProductoNombrePipe } from './pipes/buscar-producto-nombre.pipe';
-import { BuscarProductoProveedorPipe } from './pipes/buscar-producto-proveedor.pipe'
+import { BuscarProductoProveedorPipe } from './pipes/buscar-producto-proveedor.pipe';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,7 @@ import { BuscarProductoProveedorPipe } from './pipes/buscar-producto-proveedor.p
     BuscarDepartamentoPipe,
     ProductosComponent,
     BuscarProductoNombrePipe,
-    BuscarProductoProveedorPipe,
+    BuscarProductoProveedorPipe
   ],
   imports: [
     BrowserModule,
