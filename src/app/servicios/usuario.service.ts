@@ -58,6 +58,13 @@ export class UsuarioService {
      return this._http.get(this.ruta + 'obtenerEmpleados', {headers: headersToken});
    }
 
+   obtenerEmpleadoID(id:String): Observable<any>{
+
+      let headersToken = this.headersVariable.set('Authorization', this.obtenerToken());
+
+      return this._http.get(this.ruta + 'obtenerEmpleadoID/' + id, {headers: headersToken});
+   }
+
 
    obtenerToken(){
      var token2 = localStorage.getItem('token');
