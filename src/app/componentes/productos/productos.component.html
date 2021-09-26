@@ -1,0 +1,170 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.87.0">
+    <title>Heroes · Bootstrap v5.1</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/heroes/">
+
+  </head>
+  <body>
+
+<main>
+
+
+  <div class="b-example-divider"></div>
+
+  <div>
+  <h1 class="diferent">Productos Registrados</h1>
+</div>
+
+<br>
+
+<div class="row">
+  <div class="col">
+    <div class="d-grid gap-2 d-md-block">
+      <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalAgregarProducto">
+        <i class="bi bi-plus-square">Agregar Producto</i>
+      </button>
+    </div>
+  </div>
+</div>
+
+  <br>
+
+<div class="list-group">
+  <a class="list-group-item list-group-item-action active" aria-current="true">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="h5">Escoja como desea ordenar los libros</h5>
+    </div>
+  </a>
+  <a class="list-group-item list-group-item-action">
+    <div class="d-flex w-100 justify-content-between" (click)="ordenarProductosAscendente()">
+      <h5 class="h52">Ordenar Stock de menor a mayor</h5>
+    </div>
+     </a>
+
+     <a class="list-group-item list-group-item-action">
+      <div class="d-flex w-100 justify-content-between" (click)="ordenarProductosDescendente()">
+        <h5 class="h52">Ordenar Stock de mayor a menor</h5>
+      </div>
+       </a>
+</div>
+
+<br>
+
+  <h5 class="pal2">Buscar Producto Por:</h5>
+
+  <div>
+    <form class="form">
+      <input [(ngModel)]="buscarProductoNombre" type="search" name="buscarProductoNombre" placeholder="Nombre Producto" autocomplete="off">
+      <input [(ngModel)]="buscarProductoProveedor" type="search" name="buscarProductoProveedor" placeholder="Nombre Proveedor" autocomplete="off">
+    </form>
+  </div>
+
+
+  <div *ngFor="let prod of productosList | buscarProductoNombre: buscarProductoNombre | buscarProductoProveedor:buscarProductoProveedor">
+  <div class="px-4 pt-5 my-5 text-center border-bottom">
+    <h1 class="display-4 fw-bold">{{prod.nombre}}</h1>
+    <h5 class="pal">Proveedor {{prod.proveedor}}</h5>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4"></p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+        <button type="button" class="btn btn-primary btn-lg px-4 me-sm-3" data-bs-toggle="modal" data-bs-target="#modalVerProducto"
+        (click)="obtenerProductosID(prod._id)">Ver Producto</button>
+      </div>
+    </div>
+    <div class="overflow-hidden" style="max-height: 30vh;">
+
+    </div>
+  </div>
+</div>
+
+  <div class="b-example-divider mb-0"></div>
+</main>
+
+  </body>
+</html>
+
+
+
+<!-- Modal Agregar Producto-->
+<div class="modal fade" id="modalAgregarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agregar Producto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="inputAutor2" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="inputAutor2" name="autor2" #autor2="ngModel"
+            [(ngModel)]="productoIDModel.nombre">
+          </div>
+          <div class="mb-3">
+            <label for="inputTitulo2" class="form-label">Proveedor</label>
+            <input type="text" class="form-control" id="inputTitulo2" name="titulo2" #titulo2="ngModel"
+            [(ngModel)]="productoIDModel.proveedor">
+          </div>
+          <div class="mb-3">
+            <label for="inputEdicion2" class="form-label">Stock</label>
+            <input type="text" class="form-control" id="inputEdicion2" name="edicion2" #edicion2="ngModel"
+            [(ngModel)]="productoIDModel.stock">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal"
+        (click)="agregarProducto()">Agregar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Ver Producto-->
+<div class="modal fade" id="modalVerProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agregar Libro</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="inputAutor2" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="inputAutor2" name="autor2" #autor2="ngModel"
+            [(ngModel)]="productoIDModel.nombre" disabled>
+          </div>
+          <div class="mb-3">
+            <label for="inputTitulo2" class="form-label">Proveedor</label>
+            <input type="text" class="form-control" id="inputTitulo2" name="titulo2" #titulo2="ngModel"
+            [(ngModel)]="productoIDModel.proveedor" disabled>
+          </div>
+          <div class="mb-3">
+            <label for="inputEdicion2" class="form-label">Stock</label>
+            <input type="text" class="form-control" id="inputEdicion2" name="edicion2" #edicion2="ngModel"
+            [(ngModel)]="productoIDModel.stock" disabled>
+          </div>
+          <div class="mb-3">
+            <label for="inputVendido" class="form-label">Vendido</label>
+            <input type="text" class="form-control" id="inputVendido" name="vendido" #vendido="ngModel"
+            [(ngModel)]="productoIDModel.vendido" disabled>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
