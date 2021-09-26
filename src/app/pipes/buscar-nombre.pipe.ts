@@ -4,13 +4,14 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'buscarNombre'
 })
 export class BuscarNombrePipe implements PipeTransform {
-  transform(usuarios: any, search: any): any {
+
+  transform(empleados: any, search: any): any {
 
     if(search == undefined){
-      return usuarios;
+      return empleados;
     } else{
-      return usuarios.filter( usuario=>{
-        return usuario.departamento
+      return empleados.filter( empleado=>{
+        return empleado.nombre.toLowerCase().includes(search.toLowerCase())
       })
     }
   }
