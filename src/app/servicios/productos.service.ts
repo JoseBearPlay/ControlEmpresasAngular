@@ -54,6 +54,13 @@ export class ProductosService {
     return this._http.get(this.ruta + 'obtenerProductosID/' + id, {headers: headersToken});
    }
 
+   venderProducto(vendido: Producto): Observable<any>{
+    let params = JSON.stringify(vendido);
+
+    return this._http.put(this.ruta + 'vender/' + vendido._id, params, {headers: this.headersVariable});
+
+   }
+
    obtenerToken(){
     var token2 = localStorage.getItem('token');
 
