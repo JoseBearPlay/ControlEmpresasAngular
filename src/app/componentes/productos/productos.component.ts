@@ -125,4 +125,16 @@ export class ProductosComponent implements OnInit {
     )
   }
 
+  venderProducto(){
+    this._productoService.venderProducto(this.productoIDModel).subscribe(
+      response => {
+        console.log(response);
+        Swal.fire({
+          icon: 'success',
+          title: 'Venta del producto ' + [this.productoIDModel.nombre] + ' efectuada correctamente'
+        })
+      }
+    )
+  }
+
 }
