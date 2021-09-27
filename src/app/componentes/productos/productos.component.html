@@ -77,6 +77,8 @@
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
         <button type="button" class="btn btn-primary btn-lg px-4 me-sm-3" data-bs-toggle="modal" data-bs-target="#modalVerProducto"
         (click)="obtenerProductosID(prod._id)">Ver Producto</button>
+        <button type="button" class="btn btn-primary btn-lg px-4 me-sm-3" data-bs-toggle="modal" data-bs-target="#modalComprarProducto"
+        (click)="obtenerProductosID(prod._id)">Comprar Producto</button>
       </div>
     </div>
     <div class="overflow-hidden" style="max-height: 30vh;">
@@ -163,6 +165,32 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="modalComprarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agregar Libro</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="inputVendido" class="form-label">Ingrese Un numero a comprar</label>
+            <input type="text" class="form-control" id="inputVendido" name="vendido" #vendido="ngModel"
+            [(ngModel)]="productoIDModel.vendido">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal"
+        (click)="venderProducto()">Vender</button>
       </div>
     </div>
   </div>
