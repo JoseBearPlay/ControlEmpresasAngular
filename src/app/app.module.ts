@@ -32,7 +32,7 @@ import { BuscarProductoProveedorPipe } from './pipes/buscar-producto-proveedor.p
     BuscarDepartamentoPipe,
     ProductosComponent,
     BuscarProductoNombrePipe,
-    BuscarProductoProveedorPipe
+    BuscarProductoProveedorPipe,
   ],
   imports: [
     BrowserModule,
